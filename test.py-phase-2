@@ -1,0 +1,28 @@
+#/bin/python
+import json
+
+
+def fun_Instance_Name(Instance):
+    #Instance_ID = Instances["Instances"][0]["InstanceId"];
+    #print Instance
+    for Tags in Instances["Instances"][0]["Tags"]:
+        if Tags["Key"] == "Name":
+            Instance_NAME = Tags["Value"]
+            return Instance_NAME
+    
+
+with open("instances_full") as json_file:
+    json_data = json.load(json_file)
+    print(json.dumps(json_data, indent=4))
+    print("=====================")
+    print "ID" " \t\t" "Name"
+    for Instances in json_data["Reservations"]:
+        Instance_NAME = fun_Instance_Name(Instances)
+        #print Instances
+        Instance_ID = Instances["Instances"][0]["InstanceId"];
+        #Instance_ID = Instances["Instances"][0]["InstanceId"];
+        #for Tags in Instances["Instances"][0]["Tags"]:
+        #    if Tags["Key"] == "Name":
+        #        Instance_NAME = Tags["Value"]
+        print "\n", Instance_ID, Instance_NAME, 
+     #   exit() 
